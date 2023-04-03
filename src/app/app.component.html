@@ -1,0 +1,308 @@
+<div class="container">
+  <div style="margin-bottom: 20px">
+    <!-- <app-header></app-header>
+    <app-footer></app-footer>0 -->
+  </div>
+
+  <!-- How to call Function Basics  -->
+  <button type="submit" (click)="funCalled()">How Function Called</button>
+  <hr />
+
+  <!-- How to call Single Function -->
+  <button type="submit" (click)="singleFun('Vishal')">
+    Single Function Call
+  </button>
+  <br />
+  <br />
+
+  <!-- How to call Multiple Function -->
+  <button type="submit" (click)="multipleFun('Vishal', 123)">
+    Multiple Function Call
+  </button>
+  <hr />
+
+  <!-- How to call Function in Console  -->
+  <button type="submit" (click)="consoleFun()">See in console</button>
+  <hr />
+
+  <!-- How to call Function using Key up Event  -->
+  <input
+    type="text"
+    (keyup)="keyupFun(box.value)"
+    name=""
+    #box
+    placeholder="Event Key up"
+  />
+  <br />
+  <br />
+
+  <!-- How to call Function using Key down Event  -->
+  <input
+    type="text"
+    (keydown)="keydownFun(box1.value)"
+    name=""
+    #box1
+    placeholder="Event Key down"
+  />
+  <br />
+  <br />
+
+  <!-- How to call Function using Blur Event  -->
+  <input
+    type="text"
+    (blur)="keyBlur(box2.value)"
+    name=""
+    #box2
+    placeholder="Event Blur"
+  />
+  <br />
+  <br />
+
+  <!-- How to call Function using Input Event -->
+  <input
+    type="text"
+    (input)="keyInput(box3.value)"
+    name=""
+    #box3
+    placeholder="Event Input"
+  />
+  <hr />
+
+  <!-- How to call Function using Mouse Over Event -->
+  <h3 (mouseover)="mouseOver('MouseOver is working')">Mouse Over</h3>
+  <br />
+
+  <!-- How to call Function using Mouse Leave Event -->
+  <h3 (mouseleave)="mouseLeave('MouseLeave is working')">Mouse Leave</h3>
+  <hr />
+
+  <!-- How to get TextBox Value and print -->
+  <input
+    type="text"
+    (keyup)="getValue(textbox1.value)"
+    #textbox1
+    placeholder="TextBox value and print"
+    name="name"
+  />
+  <p>TextBox Value is : {{ displayVal }}</p>
+
+  <!-- How to get TextBox Value and print using Button Click -->
+  <input
+    type="text"
+    #textbox2
+    placeholder="TextBox value and print using Button Click "
+    name="name"
+  />
+  <button (click)="getBtnValue(textbox2.value)">Click Me</button>
+  <p>TextBox Value is : {{ displayVal1 }}</p>
+  <hr />
+
+  <!-- How to Make Counter Increased and Decreased -->
+  <button (click)="counterVal('Addition')">Addition (++)</button>
+  <span>Count Value : {{ count }}</span>
+  <button (click)="counterVal('Subtraction')">Subtraction (--)</button>
+  <hr />
+
+  <!-- If - Else Condition Example -->
+  <h1 *ngIf="show; then ifBlock; else elseBlock"></h1>
+
+  <ng-template #ifBlock>
+    <h1>This is If Condition</h1>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <h2>This is else Condition</h2>
+  </ng-template>
+  <hr />
+
+  <!-- If-Else-If Condition Example -->
+  <ng-template [ngIf]="color === 'red'">
+    <h2 style="color: red">Color is Red</h2>
+  </ng-template>
+
+  <ng-template [ngIf]="color === 'green'">
+    <h2 style="color: green">Color is Green</h2>
+  </ng-template>
+
+  <ng-template [ngIf]="color === 'blue'">
+    <h2 style="color: blue">Color is Blue</h2>
+  </ng-template>
+  <hr />
+
+  <!-- Switch Condition Example -->
+  <div [ngSwitch]="switchColor">
+    <h2 style="color: red" *ngSwitchCase="'red'">Color is Red</h2>
+    <h2 style="color: green" *ngSwitchCase="'green'">Color is green</h2>
+    <h2 style="color: blue" *ngSwitchCase="'blue'">Color is Blue</h2>
+    <h2 style="color: orange" *ngSwitchCase="'orange'">Color is Orange</h2>
+    <h2 style="color: yellow" *ngSwitchCase="'yellow'">Color is Yellow</h2>
+
+    <h2 *ngSwitchDefault>Color is Default</h2>
+  </div>
+  <hr />
+
+  <!-- Loops in Angular -->
+  <!-- using single array -->
+  <p *ngFor="let item of userData">Name is : {{ item }}</p>
+  <hr />
+  <!-- using array with objects for multiple values -->
+  <p *ngFor="let item of userDetails">
+    {{ item.name }} -- {{ item.email }} -- {{ item.contact }}
+  </p>
+  <hr />
+
+  <!-- Nested Loops in Angular -->
+  <ul *ngFor="let data of nestedLoop">
+    <li>Name : {{ data.name }}</li>
+    <li>Contact : {{ data.contact }}</li>
+    <li>Social Accounts :</li>
+    <ul *ngFor="let account of data.socialAcc">
+      <li>{{ account }}</li>
+    </ul>
+  </ul>
+  <hr />
+
+  <!-- Style Binding in Angular -->
+  <h2 [style.color]="colorData" [style.backgroundColor]="bgColor">
+    Style Binding
+  </h2>
+
+  <button (click)="updateColor()">Update Color</button>
+</div>
+<hr />
+
+<div class="container">
+  <!-- Basics Form -->
+  <form #basicForm="ngForm" (ngSubmit)="getformData(basicForm.value)">
+    <input type="text" ngModel name="user" placeholder="Enter User Name" />
+    <br /><br />
+    <input type="text" ngModel name="email" placeholder="Enter User Email" />
+    <br /><br />
+    <input
+      type="password"
+      ngModel
+      name="password"
+      placeholder="Enter User Password"
+    />
+    <br /><br />
+
+    <button>Submit</button>
+    <br /><br />
+    <ul>
+      <li>{{ formData.user }}</li>
+      <li>{{ formData.email }}</li>
+      <li>{{ formData.password }}</li>
+    </ul>
+  </form>
+</div>
+<hr />
+
+<!-- Toggle Element -->
+<div class="container">
+  <button (click)="toggleEle()">Show/Hide</button>
+  <h4 *ngIf="display">Toggle Element</h4>
+</div>
+<hr />
+
+<!-- Make Todo List -->
+<div class="container">
+  <input type="text" #task placeholder="Enter the task" />
+  <br /><br />
+  <button (click)="addData(task.value)">Add Data</button>
+  <br /><br />
+  <ul *ngFor="let item of todoList">
+    <li>
+      {{ item.name }} <button (click)="removeTask(item.id)">Remove</button>
+    </li>
+  </ul>
+</div>
+<hr />
+
+<!-- Send data Parent to Child Component -->
+<div class="container">
+  <app-child [itemValue]="dataValue"></app-child>
+  <button (click)="updateChild()">Update Child Component</button>
+</div>
+<hr />
+
+<!-- Make Child (Reuseable) Component in for Loop -->
+<div class="container">
+  <ul *ngFor="let detail of userdetail">
+    <app-user-details [data]="detail"></app-user-details>
+  </ul>
+</div>
+<hr />
+
+<!-- Send data Child to Parent Component -->
+<div class="container">
+  <h5>{{ data }}</h5>
+  <app-child-toparent
+    (updateDataEvent)="updateData($event)"
+  ></app-child-toparent>
+</div>
+<hr />
+
+<!-- Two way Binding -->
+<div class="container">
+  <input type="text" [(ngModel)]="bindingName" placeholder="Enter Your Name" />
+  <h4>{{ bindingName }}</h4>
+</div>
+<hr />
+
+<!-- Pipes in Angular -->
+<div class="container">
+  <h5>{{ title }}</h5>
+  <h5>{{ title | uppercase }}</h5>
+  <h5>{{ title | lowercase }}</h5>
+
+  <h5>{{ today }}</h5>
+  <h5>{{ today | date }}</h5>
+  <h5>{{ today | date : "fullDate" }}</h5>
+</div>
+<hr />
+
+<!-- Advance Pipes in Angular -->
+<div class="container">
+  <h5>{{ title | slice : 3 : 6 | uppercase }}</h5>
+  <h5>{{ userPipes | json }}</h5>
+  <h5>{{ 20 | currency : "INR" }}</h5>
+</div>
+<hr />
+
+<!-- Reactive form with validation in Angular -->
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+    <input
+      type="text"
+      placeholder="Enter Your Name"
+      name="username"
+      formControlName="username"
+    />
+    <br />
+    <span
+      *ngIf="userValidator && userValidator.invalid && userValidator.touched"
+      style="color: red; font-size: 12px"
+      >This is invalid</span
+    >
+    <br />
+    <input
+      type="password"
+      placeholder="Enter Your Password"
+      name="password"
+      formControlName="password"
+    />
+    <br />
+    <span
+      *ngIf="
+        passwordValidator &&
+        passwordValidator.invalid &&
+        passwordValidator.touched
+      "
+      style="color: red; font-size: 12px"
+      >This is invalid</span
+    >
+    <br />
+    <button [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>
+<hr />
